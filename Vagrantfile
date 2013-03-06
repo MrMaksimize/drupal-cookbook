@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
   config.vm.box = "opscode-ubuntu-12.04"
   config.vm.box_url = "https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box"
 
-  config.vm.customize ["modifyvm", :id, "--memory", "512"]
+  config.vm.customize ["modifyvm", :id, "--memory", "1024"]
 
   config.vm.network :hostonly, "33.33.33.11"
 
@@ -30,7 +30,7 @@ Vagrant::Config.run do |config|
         :db => {
           :password => "drupalpass"
         },
-        :dir => "/vagrant/mysite"
+        :dir => "/vagrant/srv"
       },
       :hosts => {
         :localhost_aliases => ["drupal.vbox.local", "dev-site.vbox.local"]

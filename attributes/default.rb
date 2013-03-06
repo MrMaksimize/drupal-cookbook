@@ -19,7 +19,10 @@
 #
 
 default['drupal']['version'] = "7.18"
-default['drupal']['dir'] = "/var/www/drupal"
+default['drupal']['repo'] = "http://git.drupal.org/project/drupal.git"
+default['drupal']['branch'] = "7.x"
+default['drupal']['dir'] = "/vagrant/srv"
+default['drupal']['distro_make'] = "https://raw.github.com/MrMaksimize/Drupal-BoilerPlate/base/distro.make"
 default['drupal']['db']['database'] = "drupal"
 default['drupal']['db']['user'] = "drupal"
 default['drupal']['db']['host'] = "localhost"
