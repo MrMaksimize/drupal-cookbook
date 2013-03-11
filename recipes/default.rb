@@ -58,6 +58,13 @@ template "/etc/mysql/drupal-grants.sql" do
   notifies :run, "execute[mysql-install-drupal-privileges]", :immediately
 end
 
+template "/etc/php5/apache2/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
 execute "create #{node['drupal']['db']['database']} database" do
   command "/usr/bin/mysqladmin -h #{node['drupal']['db']['host']} -u root -p#{node['mysql']['server_root_password']} create #{node['drupal']['db']['database']}"
   not_if "mysql -h #{node['drupal']['db']['host']} -u root -p#{node['mysql']['server_root_password']} --silent --skip-column-names --execute=\"show databases like '#{node['drupal']['db']['database']}'\" | grep #{node['drupal']['db']['database']}"
