@@ -29,9 +29,10 @@ end
 directory node['drupal']['drush']['dir'] do
   owner "root"
   group "root"
-  mode "0755"
+  mode "0777"
   action :create
 end
+
 
 execute "untar-drush" do
   cwd node['drupal']['drush']['dir']
@@ -41,4 +42,14 @@ end
 
 link "/usr/local/bin/drush" do
   to "#{node['drupal']['drush']['dir']}/drush"
+end
+
+execute "console-table-drush" do
+  command "drush"
+end
+
+directory node['drupal']['drush']['dir'] do
+  owner "root"
+  group "root"
+  mode "0755"
 end
